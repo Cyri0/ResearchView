@@ -1,5 +1,5 @@
 import os
-from mysk import SECRET_KEY
+from .mysk import SECRET_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
