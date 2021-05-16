@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head-content %}
+    <style>
+        .postholder{
+            color: white;
+        }
+
+        .postholder h1{
+            text-align: left;
+        }
+
+        .postholder p {
+            text-align: justify;
+
+            overflow: hidden;
+        }
+
+        .picsholder,  .postholder{
+            height: 25vh;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .postholder{
+            padding: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .noformat_anchor{
+            text-decoration: none;
+        }
+
+        .more{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .more:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+{% endblock head-content %}
+{% block content %}
+<div class="container postcontainer">
+    {% for post in posts %}
+
+    <div class="row">
+        <div class="col-md-3 picsholder noborder"
+        style="background-image: url('{{ MEDIA_URL }}/media/{{ post.hero_image.name }}')">
+        </div>
+        <div class="col-md-9 postholder noborder">
+
+
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.shortcontent }}</p>
+                <a href="{% url 'post' post.id %}" class="more">Tovább olvasom!</a>
+        </div>
+    </div>
+    </a>
+{% endfor %}
+</div>
+{% endblock content %}
+{% block scripts %}
+{% endblock scripts %}

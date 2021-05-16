@@ -1,0 +1,144 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block head-content %}
+<style>
+    .more{
+        color: black;
+        width: 100%;
+        text-align: right;
+        padding: 20px;
+    }
+
+    .content [class*="col"]{
+        border-radius: 10px;
+    }
+
+    #hero, .post-element{
+        position: relative;
+        overflow: hidden;
+    }
+
+    .post-element h2{
+        font-size: 1.2rem;
+    }
+
+    .post-element, #hero{
+        background-size: cover;
+        background-position: center;
+    }
+
+    .post-element:hover, #hero:hover{
+        cursor: pointer;
+    }
+
+    h2.post-title, h1.hero-title{
+        color: var(--font);
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        width: 100%;
+    }
+
+    .category{
+        width: 80px;
+        height: 80px;
+        background-color: black;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .secondary-holder{
+        background-color: transparent;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: none;
+    }
+
+    .content{
+        min-height:50vh;
+    }
+</style>
+{% endblock head-content %}
+{% block content %}
+
+<div class="container content">
+    <div class="row">
+        {% if newest|length > 0 %}
+        <div class="col vh60" id="hero" onclick="window.location='{% url 'post' newest.0.id %}';"
+        style="background-image: url('media/{{ newest.0.hero }}')">
+              
+            <h1 class="hero-title">{{ newest.0.title }}</h1>
+        </div>
+        {% else %}
+        <h1 style="text-align: center;">Nincs még egyetlen post sem!<br>Gyere vissza később...</h1>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 secondary-holder">
+            <div class="row">
+            {% if newest|length > 1 %}
+            <div class="col-md-6 vh30 post-element" onclick="window.location='{% url 'post' newest.1.id %}';"
+            style="background-image: url('media/{{ newest.1.hero }}')">
+                <h2 class="post-title">{{ newest.1.title }}</h2>
+            </div>
+            {% endif %}
+
+            {% if newest|length > 2 %}
+            <div class="col-md-6 vh30 post-element" onclick="window.location='{% url 'post' newest.2.id %}';"
+            style="background-image: url('media/{{ newest.2.hero }}')">
+                <h2 class="post-title">{{ newest.2.title }}</h2>
+            </div>
+            {% endif %}
+
+            {% if newest|length > 3 %}
+            <div class="col-md-12 vh30 post-element" onclick="window.location='{% url 'post' newest.3.id %}';"
+            style="background-image: url('media/{{ newest.3.hero }}')">
+                <h2 class="post-title">{{ newest.3.title }}</h2>
+            </div>
+            {% endif %}
+        </div>
+        </div>
+
+        {% if newest|length > 4 %}
+        <div class="col-md-6 vh60 post-element" onclick="window.location='{% url 'post' newest.4.id %}';"
+        style="background-image: url('media/{{ newest.4.hero }}')">
+                <h2 class="post-title">{{ newest.4.title }}</h2>
+        </div>
+        {% endif %}
+
+        {% if newest|length > 5 %}
+        <div class="col-md-4 col-lg-3 vh30 post-element" onclick="window.location='{% url 'post' newest.5.id %}';"
+        style="background-image: url('media/{{ newest.5.hero }}')">
+            <h2 class="post-title">{{ newest.5.title }}</h2>
+        </div>
+        {% endif %}
+
+        {% if newest|length > 6 %}
+        <div class="col-md-4 col-lg-6 vh30 post-element" onclick="window.location='{% url 'post' newest.6.id %}';"
+        style="background-image: url('media/{{ newest.6.hero }}')">
+            <h2 class="post-title">{{ newest.6.title }}</h2>
+        </div>
+        {% endif %}
+        {% if newest|length > 7 %}
+        <div class="col-md-4 col-lg-3 vh30 post-element" onclick="window.location='{% url 'post' newest.7.id %}';"
+        style="background-image: url('media/{{ newest.7.hero }}')">
+            <h2 class="post-title">{{ newest.7.title }}</h2>
+        </div>
+        {% endif %}
+
+        {% if newest|length > 8 %}
+        <a href="#" class="more">Több...</a>
+        {% endif %}
+    </div>
+    
+</div>
+{% endblock content %}
+
+        {% block scripts %}
+        {% endblock scripts %}

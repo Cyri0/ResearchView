@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css'  %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        :root {
+            --background: rgb(197, 197, 197);
+            --menu: rgb(39, 39, 39);
+            --font: white;
+        }
+
+        body {
+            background-color: var(--background);
+        }
+    
+        [class*="col"]{
+            background-color: var(--menu);
+            border: 2px solid var(--background);
+            padding: 10px;
+            text-align: center;
+        }
+    
+        [class*="col"] a {
+            color: var(--font);
+            text-decoration: none;
+        }
+    
+        .vh30{
+            height: 30vh;
+        }
+
+        .vh60{
+            height: 60vh;
+        }
+    
+        .menucontainer{
+            margin-bottom: 10vh;
+        }
+
+        .menu{
+            margin-top: 20px;
+            height: auto;
+            transition: 1s;
+        }
+    
+        .mobile{
+            display: none;
+        }
+    
+        .icon{
+            text-align: right;
+            font-size: 50px;
+            padding-right: 50px;
+            color: var(--font);
+        }
+    
+        .icon button{
+            background-color: transparent;
+            border: none;
+            color: var(--font);
+            transition: 1s;
+        }
+
+        .footer{
+            margin-top: 15vh;
+            min-height: 20vh;
+        }
+
+        .noborder {
+            border: none;
+        }
+
+        #menu a {
+            border: 10px solid rgba(255, 255, 255, 0);
+        }
+
+        #menu a:hover{
+            text-decoration: underline;
+        }
+
+        #menu{
+            overflow: hidden;
+        }
+
+        .homebtn{
+            display: inline;
+            float: left;
+            width: 100px;
+            color: white;
+            height: 90px;
+            line-height: 90px;
+        }
+
+        @media screen and (max-width: 991px) {
+            .menu{
+                height: 0px;
+                margin: 0px;
+            }
+            .mobile{
+                display: block;
+            }
+            .normal-size-menu{
+                height: 300px;
+            }
+
+            .homebtn{
+                margin-left: 20px;
+            }
+        }
+    </style>
+
+
+    {% block head-content %}
+    {% endblock head-content %}
+
+</head>
+
+<body>
+    <div class="container-fluid menucontainer">
+        
+        <div class="row">
+            <div class="col noborder">
+                <div class="homebtn"><a href="{% url 'home' %}">HOME</a></div>
+            <div class="container">
+                <div class="row mobile">
+                    <div class="col icon noborder"><button onclick="openMenu(this)">&#9776;</button></div>
+                </div>
+                <div class="row menu" id="menu">
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'music' %}">Zenék</a>
+                    </div>
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'book' %}">Könyvek</a>
+                    </div>
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'comic' %}">Képregények</a>
+                    </div>
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'movie' %}">Filmek</a>
+                    </div>
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'game' %}">Videojátékok</a>
+                    </div>
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'research' %}">Kutatások</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>    
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col noborder footer"><p>Készítette: Nemes Tamás</p></div>
+    </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script>
+        let menu = document.getElementById('menu');
+        let cross_mark = '&#10799;';
+        let hamburger_icon = '&#9776;';
+        function openMenu(button) {
+            if (!menu.classList.contains('normal-size-menu')) {
+                button.innerHTML = cross_mark;
+                menu.classList.add('normal-size-menu');
+            } else {
+                button.innerHTML = hamburger_icon;
+                menu.classList.remove('normal-size-menu');
+            }
+        }
+    </script>
+    {% block scripts %}
+    {% endblock scripts %}
+</body>
+
+</html>
