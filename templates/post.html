@@ -61,11 +61,23 @@
         }
 
         .tag{
-            padding: 5px 10px 5px 10px;
             background-color: rgb(51, 51, 51);
             border-radius:5px;
+            padding: 10px 0px 10px 0px;
+            overflow: hidden;
             color: white;
             text-align: left;
+            margin-right: 5px;
+            transition: 1s;
+        }
+
+        .tag:hover{
+            text-decoration: underline;
+            background-color: rgb(20,20,20);
+        }
+
+        .tag a{
+            padding: 10px 15px 10px 15px;
         }
 
         .tags{
@@ -86,7 +98,11 @@
                 <h1>{{ post.title | safe}}</h1>
                 <div class="tags">
                     {% for tag in post.tags.all %}
-                    <span class="tag">{{ tag }}</span>
+                    <span class="tag">
+                        <a href="{% url 'blog-by-tag' tag.name %}">
+                        {{ tag }}
+                        </a>
+                    </span>
                     {% endfor %}
                 </div>
                 <p>{{ post.content | safe}}</p>

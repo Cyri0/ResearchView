@@ -9,9 +9,6 @@ def blog(request, category):
         "posts":posts,
     }
 
-    if(len(posts) == 0):
-        pass #TODO
-
     return render(request, 'blog.html', data)
 
 def post(request, id):
@@ -23,3 +20,18 @@ def post(request, id):
     }
 
     return render(request, 'post.html', data)
+
+def blog_by_tag(request, tag):
+    all_posts = BlogPost.objects.all()
+    posts = []
+    for post in all_posts:
+        for actual_tag in post.tags.all():
+            if actual_tag.name == tag:
+                posts.append(post)
+
+    data = {
+        "category":tag,
+        "posts":posts,
+    }
+
+    return render(request, 'blog.html', data)
