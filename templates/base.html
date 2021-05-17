@@ -130,27 +130,35 @@
         
         <div class="row">
             <div class="col noborder">
-                <div class="homebtn"><a href="{% url 'home' %}">HOME</a></div>
+                <div class="homebtn"><a href="{% url 'home' %}">
+                <img src="http://researchview.hu/logo.png" style="height: 50px; margin-left: 50px;">
+                
+                </a></div>
             <div class="container">
                 <div class="row mobile">
                     <div class="col icon noborder"><button onclick="openMenu(this)">&#9776;</button></div>
                 </div>
                 <div class="row menu" id="menu">
                     <div class="col-lg-2 noborder">
-                        <a href="{% url 'blog' 'music' %}">Zenék</a>
+                        <a href="{% url 'blog' 'movie' %}">Filmek</a>
                     </div>
-                    <div class="col-lg-2 noborder">
-                        <a href="{% url 'blog' 'book' %}">Könyvek</a>
-                    </div>
+                    
                     <div class="col-lg-2 noborder">
                         <a href="{% url 'blog' 'comic' %}">Képregények</a>
                     </div>
+                    
                     <div class="col-lg-2 noborder">
-                        <a href="{% url 'blog' 'movie' %}">Filmek</a>
+                        <a href="{% url 'blog' 'book' %}">Könyvek</a>
                     </div>
+
                     <div class="col-lg-2 noborder">
                         <a href="{% url 'blog' 'game' %}">Videojátékok</a>
                     </div>
+                    
+                    <div class="col-lg-2 noborder">
+                        <a href="{% url 'blog' 'music' %}">Zenék</a>
+                    </div>
+                    
                     <div class="col-lg-2 noborder">
                         <a href="{% url 'blog' 'research' %}">Kutatások</a>
                     </div>
