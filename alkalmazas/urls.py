@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from .views import home
 from blogpost.views import blog, post, blog_by_tag
 from img_uploader.views import image_embed 

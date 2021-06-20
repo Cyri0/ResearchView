@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import os
 import json
+from ckeditor.fields import RichTextField
 
 
 class Tag(models.Model):
@@ -23,7 +24,8 @@ class BlogPost(models.Model):
     )
     title = models.CharField(max_length = 50)
     shortcontent = models.TextField(default="", max_length= 200)
-    content = models.TextField(default="")
+    #content = models.TextField(default="")
+    content = RichTextField(blank=True, null=True)
     category = models.CharField(max_length = 100, choices=CATEGORY_CHOICES, default='paint')
     
     hero_image = models.ImageField(upload_to='hero_images/', default = '')
