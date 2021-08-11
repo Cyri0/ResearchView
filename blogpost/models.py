@@ -24,15 +24,11 @@ class BlogPost(models.Model):
     )
     title = models.CharField(max_length = 50)
     shortcontent = models.TextField(default="", max_length= 200)
-    #content = models.TextField(default="")
     content = RichTextField(blank=True, null=True)
     category = models.CharField(max_length = 100, choices=CATEGORY_CHOICES, default='paint')
-    
     hero_image = models.ImageField(upload_to='hero_images/', default = '')
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     tags = models.ManyToManyField(Tag, null=True)
 
     def __str__(self):
@@ -45,8 +41,6 @@ class BlogPost(models.Model):
     @property
     def hero(self):
         return str(self.hero_image)
-
-
 
 @receiver(post_save, sender=BlogPost)
 def my_handler(sender, instance, **kwargs):
